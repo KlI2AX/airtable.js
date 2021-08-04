@@ -32,21 +32,21 @@
                 <div class="card">
                     <div class="card-header">
                         <h2 class="card-title">
-                           6555
+                           แก้ไข PR
                         </h2>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="tablePr" class="table table-striped table-bordered" style="width:100%">
+                            <table id="tablePr" class="table table-striped table-bordered" style="width:100%" onkeyup ="searchandfiltertable()">
                                 <thead>
                                     <tr class="info">
-                                        <th>รหัส PR</th>
-                                        <th>โครงการ</th>
-                                        <th>รายละเอียด</th>
-                                        <th>จัดส่ง ณ</th>
-                                        <th>สถานะ PR</th>
-                                        <th>ผู้ขออนุมัติจัดซื้อ</th>
-                                        <th>แก้ไข</th>
+                                        <th width = "10%">รหัส PR</th>
+                                        <th width = "10%">โครงการ</th>
+                                        <th width = "30%">รายละเอียด</th>
+                                        <th width = "30%">จัดส่ง ณ</th>
+                                        <th width = "10%">สถานะ PR</th>
+                                        <th width = "10%">ผู้ขออนุมัติจัดซื้อ</th>
+                                        <th width = "10%">แก้ไข</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,7 +97,7 @@
                           <div class="col-sm-3">
                             <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่เปิด PR</label>
                             <div class="col-sm-12">
-                              <input type="text" class="form-control form-control-sm" id="input2" value="ํYY/MM/DD">
+                              <input type="text" class="form-control form-control-sm" id="input2" value="ํyyyy-MM-dd">
                             </div>
                           </div>
                           <div class="col-sm-3">
@@ -301,6 +301,7 @@
     var base = new Airtable({ apiKey: 'keyc1UHWgEK9yNcL1' }).base('appU27vq4tYbLGhaF');
     var project = [];
     var projectid = [];
+    
     //download data to table
     base('project_on_hand').select({
             sort: [
@@ -312,12 +313,14 @@
                // console.log('Retrieved ', record.getId());
                 project.push(record.get('โครงการ'));
                 projectid.push(record.getId());
+                
                 //console.log(project.get[1]+"555555");
             });
             
             fetchNextPage();
         }, function done(error) {
           //console.log(error);
+          setprojecttoselection();
         });
     $(document).ready(function () {
         $('#tablePr').DataTable();
@@ -345,7 +348,7 @@
                 
                 $artistInfo.append(x)
                 $artistInfo.attr('data-record-id', record.getId());
-
+                
                 $('#tablePr').append($artistInfo);
             });
             
@@ -371,17 +374,51 @@
         } 
 
     }
+ 
+    $(document).ready(function(){
+      var input, filter, table, tr, td, i, txtValue;
+      
+  
+      table = document.getElementById("tablePr");
+      input = table.getAttribute('tablePr');
+      //filter = input.value.toUpperCase();
+      tr = table.getElementsByTagName("tr");
+      console.log(input+"56768");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    });
 
-    var setprojecttoselection = function(record){
-          for(var i = 0; i<record.length ; i++){
+    var select = document.getElementById('input1');
+    
+    var setprojecttoselection = function(){
+        console.log("modify");
+          for(var i = 0; i<project.length ; i++){
               var opt = document.createElement('option');
               opt.value = project[i];
               opt.innerHTML = project[i];
-              document.getElementById(input1).appendChild(opt);
+              select.appendChild(opt);
           }
 
     }
+    var selectvalue = function(record){
+        console.log("งงแทเ้");
+        for (var i = 0; i < project.length; i++) {
 
+            if (record.get("โครงการ") == projectid[i]) {
+                select.getElementsByTagName('option')[i].selected = 'selected'
+            }
+        }
+
+    }
     
     var modify = function (record) {
         //console.log(project.length+"จ้ามาจะจิงจา");
@@ -394,7 +431,7 @@
         var currentTime = date.toTimeString().substring(0,8);
       //console.log(document.getElementById("input1").textContent+"อันนี้เด้อ");
         //document.getElementById("modalLabel").title.(record.get('รหัส PR'));
-        setprojecttoselection(record);
+        selectvalue(record);
         //document.getElementById("input1").appendChild =searchProject(record);
         document.getElementById("input2").value =record.get('วันที่เปิด PR');
         document.getElementById("input3").value =record.get('สถานที่จัดส่ง');

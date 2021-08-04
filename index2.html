@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+    <script src="airtable.browser.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <br>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                           ตรวจสอบ PR
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="tablePr" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr class="info">
+                                      <th width = "10%">รหัส PR</th>
+                                      <th width = "10%">โครงการ</th>
+                                      <th width = "20%">รายละเอียด</th>
+                                      <th width = "30%">จัดส่ง ณ</th>
+                                      <th width = "10%">สถานะ PR</th>
+                                      <th width = "10%">ผู้ขออนุมัติจัดซื้อ</th>
+                                      <th width = "20%">ตรวจสอบ PR</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="modal-dialog modal-xl" id=myDiv>..Tone Tone Tone..</div> -->
+
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button> -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="myDiv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modifyModal" id="modalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick = "javascript:location.reload()"></button>
+                    </div>
+                    <div class="modal-body">
+
+                  <div class = "row">
+                        <div class="col-sm-3">
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รหัส PR</label>
+                            <div class="col-sm-12">
+                              <input type="text" class="form-control form-control-sm" id="input1" value=""disabled>
+                            </div>
+                          </div>
+                      <div class="col-sm-3">
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">โครงการ</label>
+                            <div class="col-sm-12">
+                              <input type="text" class="form-control form-control-sm" id="input2" value=""disabled>
+                            </div>
+                          </div>
+                          <div class="col-sm-3">
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่เปิด PR</label>
+                            <div class="col-sm-12">
+                              <input type="text" class="form-control form-control-sm" id="input3" value=""disabled>
+                            </div>
+                          </div>
+                            <div class="col-sm-3">
+                              <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ผู้ขออนุมัติจัดซื้อ</label>
+                              <div class="col-sm-12">
+                                <input type="text" class="form-control form-control-sm" id="input4" value=""disabled>
+                              </div>
+                            </div>
+                      </div>
+                      <div class = row>
+                          <div class="col-sm-3">
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">สถานะ PR</label>
+                            <div class="col-sm-12">
+                              <input type="text" class="form-control form-control-sm" id="input5" value=""disabled>
+                            </div>
+                          </div>
+                          </div>
+                      </div>
+                      <div class = row>
+                        <div class="col-sm-12">
+                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">จัดส่ง ณ</label>
+                          <div class="col-sm-12">
+                            <input type="text" class="form-control form-control-sm" id="input6" value=""disabled>
+                          </div>
+                        </div>
+                    </div>
+                    <div class = row>
+                        <div class="col-sm-12">
+                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รายละเอียด</label>
+                          <div class="col-sm-12">
+                            <input type="text" class="form-control form-control-sm" id="input7" value=""disabled>
+                          </div>
+                        </div>
+                    </div>
+                    
+                      
+                      <div class = "row">
+                          <div class="col-sm-4">
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ผู้ตรวจสอบ</label>
+                            <div class="col-sm-12">
+                              <input type="text" class="form-control form-control-sm" id="input10" value="">
+                              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary" for="btnradio1" value = "ตรวจสอบเรียบร้อย รออนุมัติ">ตรวจสอบเรียบร้อย รออนุมัติ</label>
+                              
+                                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btnradio2">ตรวจสอบแล้วไม่เรียบร้อย</label>
+                              
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+
+                    <div class="modal-footer">
+                        <button type="button" id = "close_modal" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javascript:window.location.reload()">Close</button>
+                        <button type="button" id = "save_modal" class="btn btn-primary" onclick="update()" >Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+
+
+<script>
+    var Airtable = require('airtable');
+    // Get a base ID for an instance of art gallery example
+    var base = new Airtable({ apiKey: 'keyc1UHWgEK9yNcL1' }).base('appU27vq4tYbLGhaF');
+    var project = [];
+    var projectid = [];
+    
+    //download data to table
+    base('project_on_hand').select({
+            sort: [
+                { field: 'โครงการ', direction: 'asc' }
+            ]
+        }).eachPage(function page(records, fetchNextPage) {
+            records.forEach(function (record) {
+            
+                project.push(record.get('โครงการ'));
+                projectid.push(record.getId());
+                
+       
+            });
+            
+            fetchNextPage();
+        }, function done(error) {
+          console.log(error);
+          setprojecttoselection();
+        });
+    $(document).ready(function () {
+        $('#tablePr').DataTable();
+        base('PR').select({
+          view: "ตรวจสอบ",
+            sort: [
+                { field: 'รหัส PR', direction: 'asc' }
+            ]
+        }).eachPage(function page(records, fetchNextPage) {
+            records.forEach(function (record) {
+               
+                var $artistInfo = $('<tr>');
+                $artistInfo.append($('<td>').text(record.get('รหัส PR')));
+                $artistInfo.append($('<td>').text(searchProject(record)));
+                $artistInfo.append($('<td>').text(record.get('รายละเอียด')));
+                $artistInfo.append($('<td>').text(record.get('จัดส่ง ณ')));
+                $artistInfo.append($('<td>').text(record.get('สถานะ PR')));
+                $artistInfo.append($('<td>').text(record.get('ผู้ขออนุมัติจัดซื้อ')));
+
+                var x = $('<button>').text('ตรวจสอบ PR').click(function () {
+                    modify(record);
+                });
+
+                
+                $artistInfo.append(x)
+                $artistInfo.attr('data-record-id', record.getId());           
+                $('#tablePr').append($artistInfo);
+            });
+            
+            fetchNextPage();
+        }, function done(error) {
+          //console.log(error);
+        });
+
+
+        // load project table
+
+      });
+    
+    
+      var searchProject = function(record){
+        for (let i = 0 ; i < project.length ; i++){
+        //console.log(project[i]+"ในลูป")
+            if(projectid[i]==record.get('โครงการ')){
+              return project[i];
+              break;
+            }
+        } 
+    }
+ 
+    var select = document.getElementById('input1');
+    
+    var setprojecttoselection = function(){
+        console.log("modify");
+          for(var i = 0; i<project.length ; i++){
+              var opt = document.createElement('option');
+              opt.value = project[i];
+              opt.innerHTML = project[i];
+              select.appendChild(opt);
+          }
+
+    }
+    var selectvalue = function(record){
+        for (var i = 0; i < project.length; i++) {
+
+            if (record.get("โครงการ") == projectid[i]) {
+                select.getElementsByTagName('option')[i].selected = 'selected'
+            }
+        }
+
+    }
+    
+    var modify = function (record) {
+
+        console.log("modi");
+        document.getElementById("input1").value = record.get('รหัส PR');
+        selectvalue(record);
+        document.getElementById("input2").value =searchProject(record);
+        document.getElementById("input3").value =record.get('วันที่เปิด PR');
+        document.getElementById("input4").value =record.get('ผู้ขออนุมัติจัดซื้อ');
+        document.getElementById("input5").value =record.get('สถานะ PR');
+        document.getElementById("input6").value =record.get('จัดส่ง ณ');
+        document.getElementById("input7").value =record.get('รายละเอียด');
+
+
+        y = record;
+        $("#myDiv").modal('show');
+
+    };
+    var approveornot = function(){
+        console.log(document.getElementById("btnradio1").checked);
+        if(document.getElementById("btnradio1").checked  ==  true){
+            return "ตรวจสอบเรียบร้อย รออนุมัติ";     
+        }else 
+            return "ตรวจสอบแล้วไม่เรียบร้อย";
+    }
+
+
+    var update = function () {      
+      console.log("มา");
+      base('PR').update([
+            {
+              "id": y.getId(),
+              "fields": {
+                "สถานะ PR": approveornot(),
+                "ผู้ตรวจสอบ": document.getElementById("input10").value
+ 
+              }
+            }
+          ], function(err, records) {
+            if (err) {
+              console.error(err);
+              window.alert("เกิดความผิดพลาดเวลาอัพเดทกรุณาอัพเดทใหม่")
+              return;
+            }
+            records.forEach(function(record) {
+
+              var delayInMilliseconds = 2000; //1 second
+              window.alert("อัพเดทสำเร็จ")   
+              setTimeout(function() {
+                             
+              javascript:location.reload();
+              }, delayInMilliseconds);
+            });
+          });
+
+
+          
+    }
+
+
+
+    //loadArtists();
+
+</script>
+
+</html>
