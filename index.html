@@ -1,297 +1,61 @@
-<!DOCTYPE html>
-<html>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <head>
     <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
     <script src="airtable.browser.js"></script>
+    <script src="constants.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-
-
-</head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" </head>
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <br>
-    <section class="content">
-        <div class="container-fluid">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h2 class="card-title">
-                           แก้ไข PR
-                        </h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="tablePr" class="table table-striped table-bordered" style="width:100%" onkeyup ="searchandfiltertable()">
-                                <thead>
-                                    <tr class="info">
-                                        <th width = "10%">รหัส PR</th>
-                                        <th width = "10%">โครงการ</th>
-                                        <th width = "30%">รายละเอียด</th>
-                                        <th width = "30%">จัดส่ง ณ</th>
-                                        <th width = "10%">สถานะ PR</th>
-                                        <th width = "10%">ผู้ขออนุมัติจัดซื้อ</th>
-                                        <th width = "10%">แก้ไข</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    </thead>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-
-
-        <!-- <div class="modal-dialog modal-xl" id=myDiv>..Tone Tone Tone..</div> -->
-
-        <!-- Button trigger modal -->
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button> -->
-
-        <!-- Modal -->
-        <div class="modal fade" id="myDiv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modifyModal" id="modalLabel"></h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick = "javascript:location.reload()"></button>
-                    </div>
-                    <div class="modal-body">
-
-                  <div class = "row">
-                        <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">โครงการ</label>
-                            <div class="col-sm-12">
-                              <select class="form-select" aria-label="Default select example" id = input1>
-                              </select>
+    <div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Login</h3>
+                            <div class="form-group">
+                                <label for="username" class="text-info">Username:</label><br>
+                                <input type="text" name="username" id="username" class="form-control">
                             </div>
-                          </div>
-                          <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่เปิด PR</label>
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control form-control-sm" id="input2" value="ํyyyy-MM-dd">
+                            <div class="form-group">
+                                <label for="password" class="text-info">Password:</label><br>
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
-                          </div>
-                          <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">สถานที่จัดส่ง</label>
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control form-control-sm" id="input3" value="">
+                            <label for="remember-me" class="text-info"><span>Remember me</span> <span><input
+                                        id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                            <div class="text-center form-group">
+                                <div class="text-center btn-group" role="group" aria-label="Basic example">
+                                    <input type="radio" class="btn-check col-sm-12" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary" for="btnradio1">ผู้ขออนุมัติจัดซื้อ</label>
+                                  
+                                    <input type="radio" class="btn-check col-sm-12" name="btnradio" id="btnradio2" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio2">ผู้ตรวจสอบ</label>
+                                  
+                                    <input type="radio" class="btn-check col-sm-12" name="btnradio" id="btnradio3" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio3">ผู้อนุมัติ</label>
+                                </div>
                             </div>
-                          </div>
-                            <div class="col-sm-3">
-                              <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ติดต่อคุณ</label>
-                              <div class="col-sm-12">
-                                <input type="text" class="form-control form-control-sm" id="input4" value="">
-                              </div>
+                            <div class="text-center form-group ">
+                                <Button type="button" class="btn btn-primary col-sm-6" onclick="login()">Sign In</Button>
                             </div>
-                      </div>
-                      <div class = row>
-                          <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">เบอร์โทรผู้รับของ</label>
-                            <div class="col-sm-12">
-                              <input type="tel" class="form-control form-control-sm" id="input5" value="">
-                            </div>
-                          </div>
-                          <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่จัดส่ง</label>
-                            <div class="col-sm-12">
-                              <input type="date" class="form-control form-control-sm" id="input6" value="yyyy-mm-dd">
-                            </div>
-                          </div>
-                          <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">เวลาที่จัดส่ง</label>
-                            <div class="col-sm-12">
-                              <input type="time" class="form-control form-control-sm" id="input34" value="" placeholder="HH:mm">
-                            </div>
-                          </div>
-                      </div>
-                     
-                     
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm" >ลำดับ</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รายการ</label>
-                        </div>
-                        <div class="col-sm-2">
-                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">จำนวน</label>
-                        </div>
-                        <div class="col-sm-2">
-                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">หน่วย</label>
-                        </div>
 
 
-                      </div>
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">1</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input7" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input8" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input9" value="">
-                        </div>
-                      </div>
-
-                      
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">2</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input10" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input11" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input12" value="">
-                        </div>
-                      </div>
-
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">3</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input13" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input14" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input15" value="">
-                        </div>
-                      </div>
-
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">4</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input16" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input17" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input18" value="">
-                        </div>
-                      </div>
-
-
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">5</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input19" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input20" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input21" value="">
-                        </div>
-                      </div>
-
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">6</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input22" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input23" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input24" value="">
-                        </div>
-                      </div>
-
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">7</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input25" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input26" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input27" value="">
-                        </div>
-                      </div>
-                      <div class = "row">
-                        <div class="col-sm-1">
-                          <label for="colFormLabelSm" class="col-sm-5 col-form-label col-form-label-sm">8</label>
-                        </div>
-                        <div class="col-sm-7">
-                          <input type="text" class="form-control form-control-sm" id="input28" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control form-control-sm" id="input29" value="">
-                        </div>
-                        <div class="col-sm-2">
-                          <input type="text" class="form-control form-control-sm" id="input30" value="">
-                        </div>
-                      </div>
-
-                      
-                      <div class = "row">
-                          <div class="col-sm-4">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ผู้ขออนุมัติจัดซื้อ</label>
-                            <div class="col-sm-12">
-                              <input type="text" class="form-control form-control-sm" id="input31" value="">
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" id = "close_modal" class="btn btn-secondary" data-bs-dismiss="modal" onclick="javascript:window.location.reload()">Close</button>
-                        <button type="button" id = "save_modal" class="btn btn-primary" onclick="update()" >Save changes</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
+    </div>
 </body>
 
 
@@ -299,396 +63,67 @@
     var Airtable = require('airtable');
     // Get a base ID for an instance of art gallery example
     var base = new Airtable({ apiKey: 'keyc1UHWgEK9yNcL1' }).base('appU27vq4tYbLGhaF');
-    var project = [];
-    var projectid = [];
-    
-    //download data to table
-    base('project_on_hand').select({
-            sort: [
-                { field: 'โครงการ', direction: 'asc' }
-            ]
-        }).eachPage(function page(records, fetchNextPage) {
-            records.forEach(function (record) {
-              //console.log('Retrieved ', record.get('โครงการ'));
-               // console.log('Retrieved ', record.getId());
-                project.push(record.get('โครงการ'));
-                projectid.push(record.getId());
-                
-                //console.log(project.get[1]+"555555");
-            });
-            
-            fetchNextPage();
-        }, function done(error) {
-          //console.log(error);
-          setprojecttoselection();
-        });
-    $(document).ready(function () {
-        $('#tablePr').DataTable();
-        base('PR').select({
-          view: "ตรวจสอบ",
-            sort: [
-                { field: 'รหัส PR', direction: 'asc' }
-            ]
-        }).eachPage(function page(records, fetchNextPage) {
-            records.forEach(function (record) {
-              //console.log('Retrieved ', record.get('รหัส PR'));
-               
-                var $artistInfo = $('<tr>');
-                $artistInfo.append($('<td>').text(record.get('รหัส PR')));
-                $artistInfo.append($('<td>').text(searchProject(record)));
-                $artistInfo.append($('<td>').text(record.get('รายละเอียด')));
-                $artistInfo.append($('<td>').text(record.get('จัดส่ง ณ')));
-                $artistInfo.append($('<td>').text(record.get('สถานะ PR')));
-                $artistInfo.append($('<td>').text(record.get('ผู้ขออนุมัติจัดซื้อ')));
+    var user = [];
+    var pass = [];
+    var permit = [];
 
-                var x = $('<button>').text('แก้ไข').click(function () {
-                    modify(record);
-                });
-
-                
-                $artistInfo.append(x)
-                $artistInfo.attr('data-record-id', record.getId());
-                
-                $('#tablePr').append($artistInfo);
-            });
-            
-            fetchNextPage();
-        }, function done(error) {
-          //console.log(error);
-        });
-
-
-        // load project table
-
-      });
-    
-    
-      var searchProject = function(record){
-        for (let i = 0 ; i < project.length ; i++){
-        //console.log(project[i]+"ในลูป")
-            if(projectid[i]==record.get('โครงการ')){
-              return project[i];
-              break;
-            }
-
-        } 
-
-    }
- 
-    $(document).ready(function(){
-      var input, filter, table, tr, td, i, txtValue;
-      
-  
-      table = document.getElementById("tablePr");
-      input = table.getAttribute('tablePr');
-      //filter = input.value.toUpperCase();
-      tr = table.getElementsByTagName("tr");
-      console.log(input+"56768");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    });
-
-    var select = document.getElementById('input1');
-    
-    var setprojecttoselection = function(){
-        console.log("modify");
-          for(var i = 0; i<project.length ; i++){
-              var opt = document.createElement('option');
-              opt.value = project[i];
-              opt.innerHTML = project[i];
-              select.appendChild(opt);
-          }
-
-    }
-    var selectvalue = function(record){
-        console.log("งงแทเ้");
-        for (var i = 0; i < project.length; i++) {
-
-            if (record.get("โครงการ") == projectid[i]) {
-                select.getElementsByTagName('option')[i].selected = 'selected'
-            }
-        }
-
-    }
-    
-    var modify = function (record) {
-        //console.log(project.length+"จ้ามาจะจิงจา");
-        //console.log(project.indexOf("บางกรวย-ไทยน้อย"));
-        //console.log(project[project.indexOf("บางกรวย-ไทยน้อย")]+"กว่าจะเจอ");
-        //console.log(record.get('รหัสโครงการ'));
-      //console.log(record.get("วันเวลาที่จัดส่ง"));
-        var date = new Date(record.get('วันเวลาที่จัดส่ง'));
-        var currentDate = date.toISOString().substring(0,10);
-        var currentTime = date.toTimeString().substring(0,8);
-      //console.log(document.getElementById("input1").textContent+"อันนี้เด้อ");
-        //document.getElementById("modalLabel").title.(record.get('รหัส PR'));
-        selectvalue(record);
-        //document.getElementById("input1").appendChild =searchProject(record);
-        document.getElementById("input2").value =record.get('วันที่เปิด PR');
-        document.getElementById("input3").value =record.get('สถานที่จัดส่ง');
-        document.getElementById("input4").value =record.get('ติดต่อคุณ');
-        document.getElementById("input5").value =record.get('เบอร์โทรผู้รับของ');
-        document.getElementById("input6").value = currentDate;
-        document.getElementById("input34").value =currentTime;
-        document.getElementById("input7").value =record.get('รายการที่ 1');
-        document.getElementById("input8").value =record.get('จำนวน รายการที่ 1');
-        document.getElementById("input9").value =record.get('หน่วย รายการที่ 1');
-      //console.log(record.get('รายการที่ 2')==undefined);
-
-        if(record.get('รายการที่ 2')==undefined){
-
-
-
-
-        }else if(record.get('รายการที่ 2')!=undefined){
-            document.getElementById("input10").value =record.get('รายการที่ 2');
-            document.getElementById("input11").value =record.get('จำนวน รายการที่ 2');
-            document.getElementById("input12").value =record.get('หน่วย รายการที่ 2');
-        
-        }else if(record.get('รายการที่ 3')==undefined){
-          
-
-
-        }else if(record.get('รายการที่ 3')!=undefined){
-            document.getElementById("input13").value =record.get('รายการที่ 3');
-            document.getElementById("input14").value =record.get('จำนวน รายการที่ 3');
-            document.getElementById("input15").value =record.get('หน่วย รายการที่ 3');
-
-        }else if(record.get('รายการที่ 4')==undefined){
-
-            
-        }else if(record.get('รายการที่ 4')!=undefined){
-            document.getElementById("input16").value =record.get('รายการที่ 4');
-            document.getElementById("input17").value =record.get('จำนวน รายการที่ 4');
-            document.getElementById("input18").value =record.get('หน่วย รายการที่ 4');
-
-        }else if(record.get('รายการที่ 5')==undefined){
-
-          
-        }else if(record.get('รายการที่ 5')!=undefined){
-            document.getElementById("input19").value =record.get('รายการที่ 5');
-            document.getElementById("input20").value =record.get('จำนวน รายการที่ 5');
-            document.getElementById("input21").value =record.get('หน่วย รายการที่ 5');
-
-        }else if(record.get('รายการที่ 6')==undefined){
-
-
-
-        }else if(record.get('รายการที่ 6')!=undefined){
-            document.getElementById("input22").value =record.get('รายการที่ 6');
-            document.getElementById("input23").value =record.get('จำนวน รายการที่ 6');
-            document.getElementById("input24").value =record.get('หน่วย รายการที่ 6');
-
-        }else if(record.get('รายการที่ 7')==undefined){
-
-
-        }else if(record.get('รายการที่ 7')!=undefined){
-            document.getElementById("input25").value =record.get('รายการที่ 7');
-            document.getElementById("input26").value =record.get('จำนวน รายการที่ 7');
-            document.getElementById("input27").value =record.get('หน่วย รายการที่ 7');
-
-        }else if(record.get('รายการที่ 8')==undefined){
-
-
-        }else if(record.get('รายการที่ 8')!=undefined){
-            document.getElementById("input28").value =record.get('รายการที่ 8');
-            document.getElementById("input29").value =record.get('จำนวน รายการที่ 8');
-            document.getElementById("input30").value =record.get('หน่วย รายการที่ 8');
-            
-        }
-        document.getElementById("input31").value = record.get('ผู้ขออนุมัติจัดซื้อ');
-      //console.log(document.getElementById("input2").value+"เหนื่อยจิงๆ 1111");
-        
-       /* var x = $('<button>').text('แก้ไข').click(function () {
-                    modify(record);
-                });*/
-
-
-        y = record;
-        $("#myDiv").modal('show');
-        
-        /*record.destroy(function(err) {
-            if (err) {
-               //console.log('Error destroying ', recordId, err);
-             } else {
-               //console.log('Destroyed ', record.getId());
-                 $('div[data-record-id="'+record.getId()+'"]').remove();
-             }
-         });
-         */
-    };
-    var update = function () {      
-    //console.log(y.getId());
-    //console.log(document.getElementById("input6").value+"ลองตรวจ");
+    var submit = function(x){
        
-      var datex = (document.getElementById("input6").value+"T"+document.getElementById("input34").value);
-    //console.log(Date.parse(datex)+"5555555555555555555555"); 
-      base('PR').update([
-            {
-              "id": y.getId(),
-              "fields": {
-              /*  "โครงการ": [
-                  
-              ],  */
-                "วันที่เปิด PR": document.getElementById("input2").value,
-                "สถานที่จัดส่ง": document.getElementById("input3").value,
-                "ติดต่อคุณ": document.getElementById("input4").value,
-                "วันเวลาที่จัดส่ง": Date.parse(datex),
-                "รายการที่ 1": document.getElementById("input7").value,
-                "จำนวน รายการที่ 1": parseInt(document.getElementById("input8").value),
-                "หน่วย รายการที่ 1": document.getElementById("input9").value,
-                "รายการที่ 2": document.getElementById("input10").value,
-                "จำนวน รายการที่ 2": parseInt(document.getElementById("input11").value),
-                "หน่วย รายการที่ 2": document.getElementById("input12").value,
-                "รายการที่ 3": document.getElementById("input13").value,
-                "จำนวน รายการที่ 3": parseInt(document.getElementById("input14").value),
-                "หน่วย รายการที่ 3": document.getElementById("input15").value,
-                "รายการที่ 4": document.getElementById("input16").value,
-                "จำนวน รายการที่ 4": parseInt(document.getElementById("input17").value),
-                "หน่วย รายการที่ 4": document.getElementById("input18").value,
-                "รายการที่ 5": document.getElementById("input19").value,
-                "จำนวน รายการที่ 5": parseInt(document.getElementById("input20").value),
-                "หน่วย รายการที่ 5": document.getElementById("input21").value,
-                "รายการที่ 6": document.getElementById("input22").value,
-                "จำนวน รายการที่ 6": parseInt(document.getElementById("input23").value),
-                "หน่วย รายการที่ 6": document.getElementById("input24").value,
-                "รายการที่ 7": document.getElementById("input25").value,
-                "จำนวน รายการที่ 7": parseInt(document.getElementById("input26").value),
-                "หน่วย รายการที่ 7": document.getElementById("input27").value,
-                "รายการที่ 8": document.getElementById("input28").value,
-                "จำนวน รายการที่ 8": parseInt(document.getElementById("input29").value),
-                "หน่วย รายการที่ 8": document.getElementById("input30").value,
-                "ผู้ขออนุมัติจัดซื้อ": document.getElementById("input31").value,
-                "เบอร์โทรผู้รับของ": document.getElementById("input5").value
-              }
-            }
-          ], function(err, records) {
-            if (err) {
-              console.error(err);
-              window.alert("เกิดความผิดพลาดเวลาอัพเดทกรุณาอัพเดทใหม่")
-              return;
-            }
-            records.forEach(function(record) {
-            //console.log(record.get("วันเวลาที่จัดส่ง"));
-            //console.log(document.getElementById("input3").value);
-            //console.log(document.getElementById("input4").value);
-              //console.log(document.getElementById("input4"));
-              var delayInMilliseconds = 3000; //1 second
-              window.alert("อัพเดทสำเร็จ")   
-              setTimeout(function() {
-                             
-              javascript:location.reload();
-              }, delayInMilliseconds);
-            });
-          });
-
-
-          
-    }
-    // $(document).ready(function () {
-
-    //     // Attach Button click event listener 
-    //     $("#myBtn").click(function () {
-
-    //         // show Modal
-    //         $('#myModal').modal('show');
-    //     });
-    // });
-
-
-
-
-
-
-    /* var deleteArtist = function(record) {
-         record.destroy(function(err) {
-             if (err) {
-               //console.log('Error destroying ', recordId, err);
-             } else {
-               //console.log('Destroyed ', record.getId());
-                 $('div[data-record-id="'+record.getId()+'"]').remove();
-             }
-         });
-     };
-
-    var loadArtists = function () {
-        $('#artists').empty();
-
-        base('PR').select({
+        base('permission').select({
+            view : 'selectpermission',
             sort: [
-                { field: 'รหัส PR', direction: 'asc' }
+                { field: 'E-mail', direction: 'asc' }
             ]
         }).eachPage(function page(records, fetchNextPage) {
             records.forEach(function (record) {
-              //console.log('Retrieved ', record.get('รหัส PR'));
-
-                var $artistInfo = $('<div>');
-
-                $artistInfo.append($('<h3>').text(record.get('รหัส PR')));
-                $artistInfo.append($('<div>').text("โครงการ" & record.get('โครงการ')));
-              
-
-
-
-                var x = $('<button>').text('Delete').click(function () {
-                    deleteArtist(record);
-                });
-                $artistInfo.append(x)
-                $artistInfo.attr('data-record-id', record.getId());
-
-                $('#artists').append($artistInfo);
+                // console.log(x+"ทดสอบ email :"+record.get("E-mail"));
+                console.log(record.get("E-mail"));
+                 console.log(record.get("E-mail") == document.getElementById("username").value);
+                console.log(document.getElementById("password").value==record.get("password")) ;
+                console.log(record.get("permisssion"));
+                console.log(record.get("permisssion")==="ผู้อนุมัติ");
+                if(record.get("E-mail") == document.getElementById("username").value && record.get("password")== document.getElementById("password").value){
+                    if(x=="1"){
+                        if(record.get("permisssion")=="ผู้ขออนุมัติ"||record.get("permisssion")=="ผู้อนุมัติ"){
+                            console.log("ยินดีด้วย");
+                            window.location.replace("edit.html");
+                        }
+                    }else if(x=="2"){
+                        if(record.get("permisssion")=="ผู้ตรวจสอบ"||record.get("permisssion")=="ผู้อนุมัติ"){
+                            console.log("ยินดีด้วย +1");
+                            window.location.replace("check.html");
+                        }
+                    }else if(x==="3"){
+                        if(record.get("permisssion")=="ผู้อนุมัติ"){
+                            console.log("ยินดีด้วย+2");
+                            window.location.replace("approve.html");
+                            return false;
+                        }
+                    }
+                }else console.log("ชื่อหรื่อรหัสไม่ถูกต้อง");
+              //   console.log(record.get("E-mail")+":"+document.getElementById("username").value);
+              //  console.log(record.get("password")+":"+document.getElementById("password").value);
             });
-
+            
             fetchNextPage();
         }, function done(error) {
-          //console.log(error);
+            console.log(error);
         });
-    };
-
-     $('#create').click(function(){
-         base('Artists').create({
-             "Name": "Al Held",
-             "Bio": "Al Held began his painting career by exhibiting Abstract Expressionist works in New York; he later turned to hard-edged geometric paintings that were ...",
-             "Genre": [
-                 "American Abstract Expressionism",
-                 "Color Field"
-             ],
-             "On Display?": true
-         }, function(err, record) {
-             if (err) { console.log(err); return; }
-             loadArtists();
-         });
-     });
+    }
+    
+    var login = function(){ 
+       
+        if(document.getElementById("btnradio1").checked == true){
+            submit("1"); 
+        }else if(document.getElementById("btnradio2").checked == true){
+            submit("2");
+        }else if(document.getElementById("btnradio3").checked == true){
+            submit("3");
+        }
+    }
 
 
-     $('#create').click(function(){
-         base('Artists').update({
-             "รหัสโครงการ": "PR-2021-07-TR05-22",
-             "Bio": "Al Held began his painting career by exhibiting Abstract Expressionist works in New York; he later turned to hard-edged geometric paintings that were ...",
-             "Genre": [
-                 "American Abstract Expressionism",
-                 "Color Field"
-             ],
-             "On Display?": true
-         }, function(err, record) {
-             if (err) { console.log(err); return; }
-             loadArtists();
-         });
-     });*/
-
-
-
-    //loadArtists();
-
+    
 </script>
 
 </html>

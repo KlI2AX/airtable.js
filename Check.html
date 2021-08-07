@@ -178,17 +178,10 @@
     
     //download data to table
     base('project_on_hand').select({
-            sort: [
-                { field: 'โครงการ', direction: 'asc' }
-            ]
+            filter
         }).eachPage(function page(records, fetchNextPage) {
             records.forEach(function (record) {
-            
-                project.push(record.get('โครงการ'));
-                projectid.push(record.getId());
-                
-       
-            });
+              filterByFormula={Field : 'E-mail'}="nitikarn@terraexpertise.com";
             
             fetchNextPage();
         }, function done(error) {
