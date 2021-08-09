@@ -247,7 +247,7 @@
     var select = document.getElementById('input1');
     
     var setprojecttoselection = function(){
-        console.log("modify");
+
           for(var i = 0; i<project.length ; i++){
               var opt = document.createElement('option');
               opt.value = project[i];
@@ -268,7 +268,6 @@
     
     var modify = function (record) {
 
-        console.log("modi");
         document.getElementById("input1").value = record.get('รหัส PR');
         selectvalue(record);
         document.getElementById("input2").value =searchProject(record);
@@ -293,7 +292,7 @@
 
 
     var update = function () {      
-      console.log("มา");
+  
       base('PR').update([
             {
               "id": y.getId(),

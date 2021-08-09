@@ -261,7 +261,7 @@
     
     var modify = function (record) {
 
-        console.log("modi");
+        // console.log("modi");
         document.getElementById("input1").value = record.get('รหัส PR');
         selectvalue(record);
         document.getElementById("input2").value =searchProject(record);
@@ -277,7 +277,7 @@
 
     };
     var approveornot = function(){
-        console.log(document.getElementById("btnradio1").checked);
+        // console.log(document.getElementById("btnradio1").checked);
         if(document.getElementById("btnradio1").checked  ==  true){
             return "ตรวจสอบเรียบร้อย รออนุมัติ";     
         }else 
@@ -286,7 +286,7 @@
 
 
     var update = function () {      
-      console.log("มา");
+ 
       base('PR').update([
             {
               "id": y.getId(),
