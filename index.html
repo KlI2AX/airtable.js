@@ -77,11 +77,11 @@
         }).eachPage(function page(records, fetchNextPage) {
             records.forEach(function (record) {
                 // console.log(x+"ทดสอบ email :"+record.get("E-mail"));
-                console.log(record.get("E-mail"));
-                 console.log(record.get("E-mail") == document.getElementById("username").value);
-                console.log(document.getElementById("password").value==record.get("password")) ;
-                console.log(record.get("permisssion"));
-                console.log(record.get("permisssion")==="ผู้อนุมัติ");
+                // console.log(record.get("E-mail"));
+                //  console.log(record.get("E-mail") == document.getElementById("username").value);
+                // console.log(document.getElementById("password").value==record.get("password")) ;
+                // console.log(record.get("permisssion"));
+                // console.log(record.get("permisssion")==="ผู้อนุมัติ");
                 if(record.get("E-mail") == document.getElementById("username").value && record.get("password")== document.getElementById("password").value){
                     if(x=="1"){
                         if(record.get("permisssion")=="ผู้ขออนุมัติ"||record.get("permisssion")=="ผู้อนุมัติ"){
