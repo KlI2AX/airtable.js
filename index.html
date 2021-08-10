@@ -84,7 +84,7 @@
                 // console.log(record.get("permisssion")==="ผู้อนุมัติ");
                 if(record.get("E-mail") == document.getElementById("username").value && record.get("password")== document.getElementById("password").value){
                     if(x=="1"){
-                        if(record.get("permisssion")=="ผู้ขออนุมัติ"||record.get("permisssion")=="ผู้อนุมัติ"){
+                        if(record.get("permisssion")=="ผู้ขออนุมัติ"||record.get("permisssion")=="ผู้อนุมัติ"||record.get("permisssion")=="ผู้ตรวจสอบ"){
                             console.log("ยินดีด้วย");
                             window.location.replace("edit.html");
                         }

@@ -59,7 +59,7 @@
                                         <td></td>
                                         <td></td>
                                     </tr>
-                                    </thead>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -178,11 +178,14 @@
     
     //download data to table
     base('project_on_hand').select({
-            filter
+          sort: [
+                    { field: 'โครงการ', direction: 'asc' }
+                ]
         }).eachPage(function page(records, fetchNextPage) {
-            records.forEach(function (record) {
-              filterByFormula={Field : 'E-mail'}="nitikarn@terraexpertise.com";
-            
+       
+                roject.push(record.get('โครงการ'));
+                projectid.push(record.getId());
+                
             fetchNextPage();
         }, function done(error) {
           console.log(error);
