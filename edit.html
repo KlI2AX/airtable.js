@@ -6,12 +6,18 @@
     <script src="airtable.browser.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+  
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -22,9 +28,6 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
     <br>
     <section class="content">
         <div class="container-fluid">
@@ -37,10 +40,11 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="tablePr" class="table table-striped table-bordered" style="width:100%" onkeyup ="searchandfiltertable()">
+                        </div>    
+                            <table id="tablePr" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr class="info">
-                                        <th width = "10%">รหัส PR</th>
+                                        <th class="sorting sorting_asc" tabindex="0" aria-controls="tableTr" rowspan = "1" colspan="1" aria-sort="ascending" width = "10%">รหัส PR</th>
                                         <th width = "10%">โครงการ</th>
                                         <th width = "30%">รายละเอียด</th>
                                         <th width = "30%">จัดส่ง ณ</th>
@@ -97,7 +101,7 @@
                           <div class="col-sm-3">
                             <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่เปิด PR</label>
                             <div class="col-sm-12">
-                              <input type="text" class="form-control form-control-sm" id="input2" value="ํyyyy-MM-dd">
+                              <input type="text" class="form-control form-control-sm" id="input2" value="ํ">
                             </div>
                           </div>
                           <div class="col-sm-3">
@@ -123,7 +127,7 @@
                           <div class="col-sm-3">
                             <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่จัดส่ง</label>
                             <div class="col-sm-12">
-                              <input type="date" class="form-control form-control-sm" id="input6" value="yyyy-mm-dd">
+                              <input type="date" class="form-control form-control-sm" id="input6" value="">
                             </div>
                           </div>
                           <div class="col-sm-3">
@@ -323,7 +327,8 @@
           setprojecttoselection();
         });
     $(document).ready(function () {
-        $('#tablePr').DataTable();
+        $('#tableTr').DataTable();
+      
         base('PR').select({
           view: "ตรวจสอบ",
             sort: [
@@ -350,6 +355,7 @@
                 $artistInfo.attr('data-record-id', record.getId());
                 
                 $('#tablePr').append($artistInfo);
+
             });
             
             fetchNextPage();
@@ -374,33 +380,37 @@
         } 
 
     }
- 
-    $(document).ready(function(){
-      var input, filter, table, tr, td, i, txtValue;
+
+
+
+
+
+    // $(document).ready(function(){
+    //   var input, filter, table, tr, td, i, txtValue;
       
   
-      table = document.getElementById("tablePr");
-      input = table.getAttribute('tablePr');
-      //filter = input.value.toUpperCase();
-      tr = table.getElementsByTagName("tr");
-      console.log(input+"56768");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          txtValue = td.textContent || td.innerText;
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    });
+    //   table = document.getElementById("tablePr");
+    //   input = table.getAttribute('tablePr');
+    //   filter = input.value.toUpperCase();
+    //   tr = table.getElementsByTagName("tr");
+     
+    //   for (i = 0; i < tr.length; i++) {
+    //     td = tr[i].getElementsByTagName("td")[0];
+    //     if (td) {
+    //       txtValue = td.textContent || td.innerText;
+    //       if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    //         tr[i].style.display = "";
+    //       } else {
+    //         tr[i].style.display = "none";
+    //       }
+    //     }
+    //   }
+    // });
 
     var select = document.getElementById('input1');
     
     var setprojecttoselection = function(){
-        console.log("modify");
+        
           for(var i = 0; i<project.length ; i++){
               var opt = document.createElement('option');
               opt.value = project[i];
@@ -410,7 +420,7 @@
 
     }
     var selectvalue = function(record){
-        console.log("งงแทเ้");
+       
         for (var i = 0; i < project.length; i++) {
 
             if (record.get("โครงการ") == projectid[i]) {

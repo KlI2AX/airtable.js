@@ -3,55 +3,60 @@
 
 <head>
   <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
-    <script src="airtable.browser.js"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-    <link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+  <script src="airtable.browser.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+
+
+<link rel="stylesheet" href="//cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
+
 
 
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-        <br>
-        <section class="content">
-            <div class="container-fluid">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">
-                               อนุมัติจัดซื้อ
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                            </div>    
-                                <table id="tablePr" class="table table-striped table-bordered" style="width:100%">
-                                    <thead>
-                                        <tr class="info">
-                                        <th width = "10%">รหัส PR</th>
-                                        <th width = "10%">โครงการ</th>
-                                        <th width = "30%">รายละเอียด</th>
-                                        <th width = "30%">จัดส่ง ณ</th>
-                                        <th width = "10%">สถานะ PR</th>
-                                        <th width = "10%">ผู้ขออนุมัติจัดซื้อ</th>
-                                        <th width = "10%">อนุมัติ</th>
+
+    <br>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                           รับสินค้า
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="tablePr" class="table table-striped" style="width:100%">
+                                <thead>
+                                    <tr class="info">
+                                      <th width = "10%">รหัส PO</th>
+                                      <th width = "10%">โครงการ</th>
+                                      <th width = "20%">รหัส PR</th>
+                                      <th width = "25%">รายละเอียด</th>
+                                      <th width = "10%">สถานะ PO</th>
+                                      <th width = "10%">ผู้รับของ</th>
+                                      <th width = "10%">รับของเข้าที่</th>
+                                      <th width = "15%">รับของ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
@@ -89,7 +94,7 @@
 
                   <div class = "row">
                         <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รหัส PR</label>
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รหัส PO</label>
                             <div class="col-sm-12">
                               <input type="text" class="form-control form-control-sm" id="input1" value=""disabled>
                             </div>
@@ -101,21 +106,21 @@
                             </div>
                           </div>
                           <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">วันที่เปิด PR</label>
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รหัส PR</label>
                             <div class="col-sm-12">
                               <input type="text" class="form-control form-control-sm" id="input3" value=""disabled>
                             </div>
                           </div>
-                            <div class="col-sm-3">
+                            <!-- <div class="col-sm-3">
                               <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ผู้ขออนุมัติจัดซื้อ</label>
                               <div class="col-sm-12">
                                 <input type="text" class="form-control form-control-sm" id="input4" value=""disabled>
                               </div>
-                            </div>
+                            </div> -->
                       </div>
                       <div class = row>
                           <div class="col-sm-3">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">สถานะ PR</label>
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">สถานะ PO</label>
                             <div class="col-sm-12">
                               <input type="text" class="form-control form-control-sm" id="input5" value=""disabled>
                             </div>
@@ -124,17 +129,17 @@
                       </div>
                       <div class = row>
                         <div class="col-sm-12">
-                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">จัดส่ง ณ</label>
+                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รายละเอียด</label>
                           <div class="col-sm-12">
                             <input type="text" class="form-control form-control-sm" id="input6" value=""disabled>
                           </div>
                         </div>
                     </div>
                     <div class = row>
-                        <div class="col-sm-12">
-                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รายละเอียด</label>
+                        <div class="col-sm-4">
+                          <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">รับของเข้าที่</label>
                           <div class="col-sm-12">
-                            <input type="text" class="form-control form-control-sm" id="input7" value=""disabled>
+                            <input type="text" class="form-control form-control-sm" id="input7" value="">
                           </div>
                         </div>
                     </div>
@@ -142,16 +147,16 @@
                       
                       <div class = "row">
                           <div class="col-sm-4">
-                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ผู้ตรวจสอบ</label>
+                            <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">ผู้รับของ</label>
                             <div class="col-sm-12">
                               <input type="text" class="form-control form-control-sm" id="input10" value="">
                               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-                                <label class="btn btn-outline-primary" for="btnradio1">อนุมัติจัดซื้อ</label>
-                              
+                                <label class="btn btn-outline-primary" for="btnradio1" value = "ตรวจสอบเรียบร้อย รออนุมัติ">รับของ</label>
+<!--                               
                                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="btnradio2">ไม่อนุมัติจัดซื้อ</label>
-                              
+                                <label class="btn btn-outline-primary" for="btnradio2"></label>
+                               -->
                               </div>
                             </div>
                           </div>
@@ -176,55 +181,66 @@
     var base = new Airtable({ apiKey: 'keyc1UHWgEK9yNcL1' }).base('appU27vq4tYbLGhaF');
     var project = [];
     var projectid = [];
+    var prid = [];
+    var prname =[];
     
+    //base รหัส PR
+    base('PR').select({
+      view: "Grid view"
+    }).eachPage(function page(records, fetchNextPage){
+        records.forEach(function (record) {
+        prid.push(record.getId());
+        prname.push(record.get('รหัส PR'));
+          //console.log(record.getId());
+      });
+            fetchNextPage();
+      },function done(error){
+           //console.log(error);
+    });
+
     //download data to table
     base('project_on_hand').select({
-            sort: [
-                { field: 'โครงการ', direction: 'asc' }
-            ]
+          sort: [
+                    { field: 'โครงการ', direction: 'asc' }
+                ]
         }).eachPage(function page(records, fetchNextPage) {
             records.forEach(function (record) {
-            
                 project.push(record.get('โครงการ'));
-                projectid.push(record.getId());
-                
-       
-            });
-            
+                projectid.push(record.getId());             
+        });
             fetchNextPage();
         }, function done(error) {
-          console.log(error);
+        //  console.log(error);
           setprojecttoselection();
         });
+
     $(document).ready(function () {
         $('#tablePr').DataTable();
-        base('PR').select({
-          view: "อนุมัติ PR",
+        base('PO').select({
+          view: "forstore",
             sort: [
                 { field: 'รหัส PR', direction: 'asc' }
             ]
         }).eachPage(function page(records, fetchNextPage) {
-            records.forEach(function (record) {
-               
+            records.forEach(function (record) {      
                 var $artistInfo = $('<tr>');
-                $artistInfo.append($('<td>').text(record.get('รหัส PR')));
+                $artistInfo.append($('<td>').text(record.get('รหัส PO')));
                 $artistInfo.append($('<td>').text(searchProject(record)));
+                $artistInfo.append($('<td>').text(setprid(record)));
+
                 $artistInfo.append($('<td>').text(record.get('รายละเอียด')));
-                $artistInfo.append($('<td>').text(record.get('จัดส่ง ณ')));
-                $artistInfo.append($('<td>').text(record.get('สถานะ PR')));
-                $artistInfo.append($('<td>').text(record.get('ผู้ขออนุมัติจัดซื้อ')));
-
-                var x = $('<button>').text('อนุมัติ PR').click(function () {
+                $artistInfo.append($('<td>').text(record.get('สถานะ PO')));
+                $artistInfo.append($('<td>').text(record.get('รับของเข้าที่')));
+                $artistInfo.append($('<td>').text(record.get('ผู้รับของ')));
+                var x = $('<button>').text('รับของ').click(function () {
                     modify(record);
-                });
-
-                
+                });  
                 $artistInfo.append(x)
-                $artistInfo.attr('data-record-id', record.getId());           
-                $('#tablePr').append($artistInfo);
+             
+                $artistInfo.attr('data-record-id', record.getId());
+                 $('#tablePr').append($artistInfo)
             });
-            
-            fetchNextPage();
+            fetchNextPage()
         }, function done(error) {
           //console.log(error);
         });
@@ -248,7 +264,7 @@
     var select = document.getElementById('input1');
     
     var setprojecttoselection = function(){
-
+        //console.log("modify");
           for(var i = 0; i<project.length ; i++){
               var opt = document.createElement('option');
               opt.value = project[i];
@@ -257,6 +273,18 @@
           }
 
     }
+
+    var setprid = function(record){
+      //  console.log("ttt"+prid.length);
+          for(var i = 0; i<prid.length ; i++){
+       //     console.log(prname[i]+"gเสา");
+              if(prid[i]==record.get("รหัส PR")){           
+                return prname[i];
+                break;
+              }
+          }
+    }
+
     var selectvalue = function(record){
         for (var i = 0; i < project.length; i++) {
 
@@ -269,14 +297,15 @@
     
     var modify = function (record) {
 
-        document.getElementById("input1").value = record.get('รหัส PR');
-        selectvalue(record);
+        // console.log("modi");
+        document.getElementById("input1").value = record.get('รหัส PO');
+        //selectvalue(record);
         document.getElementById("input2").value =searchProject(record);
-        document.getElementById("input3").value =record.get('วันที่เปิด PR');
-        document.getElementById("input4").value =record.get('ผู้ขออนุมัติจัดซื้อ');
-        document.getElementById("input5").value =record.get('สถานะ PR');
-        document.getElementById("input6").value =record.get('จัดส่ง ณ');
-        document.getElementById("input7").value =record.get('รายละเอียด');
+        document.getElementById("input3").value =setprid(record);
+        document.getElementById("input6").value =record.get('รายละเอียด');
+        document.getElementById("input5").value =record.get('สถานะ PO');
+        document.getElementById("input7").value =record.get('รับของเข้าที่');
+        // document.getElementById("input7").value =record.get('รายละเอียด');
 
 
         y = record;
@@ -284,23 +313,23 @@
 
     };
     var approveornot = function(){
-        console.log(document.getElementById("btnradio1").checked);
+        // console.log(document.getElementById("btnradio1").checked);
         if(document.getElementById("btnradio1").checked  ==  true){
-            return "อนุมัติจัดซื้อ";     
+            return "รับของแล้ว";     
         }else 
-            return "ไม่อนุมัติ";
+            return "ตรวจสอบแล้วไม่เรียบร้อย";
     }
 
 
     var update = function () {      
-  
-      base('PR').update([
+ 
+      base('PO').update([
             {
               "id": y.getId(),
               "fields": {
-                "สถานะ PR": approveornot(),
-                "ผู้ตรวจสอบ": document.getElementById("input10").value
- 
+                "สถานะ PO": approveornot(),
+                "รับของเข้าที่": document.getElementById("input7").value,
+                "ผู้รับของ": document.getElementById("input10").value
               }
             }
           ], function(err, records) {

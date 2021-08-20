@@ -22,9 +22,6 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
     <br>
     <section class="content">
         <div class="container-fluid">
@@ -40,8 +37,8 @@
                             <table id="tablePr" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr class="info">
-                                      <th width = "10%">รหัส PR</th>
-                                      <th width = "10%">โครงการ</th>
+                                      <th class="sorting sorting_asc" tabindex="0" aria-controls="tableTr" rowspan = "1" colspan="1" aria-sort="ascending" width = "10%">รหัส PR</th>
+                                      <th class="sorting sorting_asc" tabindex="0" aria-controls="tableTr" rowspan = "1" colspan="1" aria-sort="ascending" width = "10%">โครงการ</th>
                                       <th width = "20%">รายละเอียด</th>
                                       <th width = "30%">จัดส่ง ณ</th>
                                       <th width = "10%">สถานะ PR</th>
@@ -69,14 +66,6 @@
 
 
 
-        <!-- <div class="modal-dialog modal-xl" id=myDiv>..Tone Tone Tone..</div> -->
-
-        <!-- Button trigger modal -->
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button> -->
-
-        <!-- Modal -->
         <div class="modal fade" id="myDiv" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
@@ -178,19 +167,22 @@
     
     //download data to table
     base('project_on_hand').select({
-          sort: [
-                    { field: 'โครงการ', direction: 'asc' }
-                ]
+            sort: [
+                { field: 'โครงการ', direction: 'asc' }
+            ]
         }).eachPage(function page(records, fetchNextPage) {
-       
-                roject.push(record.get('โครงการ'));
+          records.forEach(function (record) {
+                console.log(record.get('โครงการ'));
+                project.push(record.get('โครงการ'));
                 projectid.push(record.getId());
-                
+          });
+
             fetchNextPage();
         }, function done(error) {
           console.log(error);
           setprojecttoselection();
         });
+
     $(document).ready(function () {
         $('#tablePr').DataTable();
         base('PR').select({
@@ -213,7 +205,6 @@
                     modify(record);
                 });
 
-                
                 $artistInfo.append(x)
                 $artistInfo.attr('data-record-id', record.getId());           
                 $('#tablePr').append($artistInfo);

@@ -17,6 +17,9 @@
     "@types/node": ">=8.0.0 <15",
     "abort-controller": "^3.0.0",
     "abortcontroller-polyfill": "^1.4.0",
+    "bootstrap": "^5.1.0",
+    "datatables.net": "^1.10.25",
+    "datatables.net-dt": "^1.1.0",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1"
   },

@@ -35,6 +35,9 @@
                                         id="remember-me" name="remember-me" type="checkbox"></span></label><br>
                             <div class="text-center form-group">
                                 <div class="text-center btn-group" role="group" aria-label="Basic example">
+                                    <input type="radio" class="btn-check col-sm-12" name="btnradio" id="btnradio4" autocomplete="off">
+                                    <label class="btn btn-outline-primary" for="btnradio4">รับของ</label>
+
                                     <input type="radio" class="btn-check col-sm-12" name="btnradio" id="btnradio1" autocomplete="off" checked>
                                     <label class="btn btn-outline-primary" for="btnradio1">ผู้ขออนุมัติจัดซื้อ</label>
                                   
@@ -99,6 +102,11 @@
                             window.location.replace("approve.html");
                             return false;
                         }
+                    }else if(x=="4"){
+                        if(record.get("permisssion")=="ผู้ขออนุมัติ"||record.get("permisssion")=="ผู้อนุมัติ"||record.get("permisssion")=="ผู้ตรวจสอบ"){
+                            console.log("ยินดีด้วย");
+                            window.location.replace("addtostore.html");
+                        }
                     }
                 }else console.log("ชื่อหรื่อรหัสไม่ถูกต้อง");
               //   console.log(record.get("E-mail")+":"+document.getElementById("username").value);
@@ -119,6 +127,8 @@
             submit("2");
         }else if(document.getElementById("btnradio3").checked == true){
             submit("3");
+        }else if(document.getElementById("btnradio4").checked == true){
+            submit("4");
         }
     }
 
